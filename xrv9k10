@@ -1,6 +1,5 @@
-Building configuration...
 !! IOS XR Configuration version = 6.2.2
-!! Last configuration change at Fri Jan 10 21:53:45 2020 by root
+!! Last configuration change at Fri Jan 10 22:39:03 2020 by root
 !
 hostname xrv9k10
 username root
@@ -21,8 +20,10 @@ interface MgmtEth0/RP0/CPU0/0
 router isis 65505
  segment-routing global-block 20001 20200
  address-family ipv4 unicast
+  mpls traffic-eng router-id Loopback0
   router-id 100.64.0.10
   redistribute connected
+  segment-routing mpls
  !
  interface GigabitEthernet0/0/0/0
   point-to-point
@@ -37,6 +38,8 @@ router isis 65505
   point-to-point
  !
 !
+mpls traffic-eng
+!
 lldp
 !
-end!
+end
