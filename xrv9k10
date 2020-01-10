@@ -1,0 +1,42 @@
+Building configuration...
+!! IOS XR Configuration version = 6.2.2
+!! Last configuration change at Fri Jan 10 21:53:45 2020 by root
+!
+hostname xrv9k10
+username root
+ group root-lr
+ group cisco-support
+ secret 5 $1$X0AI$k5KKlSX3kyR9PuTOfv/Tg.
+!
+call-home
+ contact smart-licensing
+ profile CiscoTAC-1
+  active
+  destination transport-method http
+ !
+!
+interface MgmtEth0/RP0/CPU0/0
+ shutdown
+!
+router isis 65505
+ segment-routing global-block 20001 20200
+ address-family ipv4 unicast
+  router-id 100.64.0.10
+  redistribute connected
+ !
+ interface GigabitEthernet0/0/0/0
+  point-to-point
+ !
+ interface GigabitEthernet0/0/0/1
+  point-to-point
+ !
+ interface GigabitEthernet0/0/0/2
+  point-to-point
+ !
+ interface GigabitEthernet0/0/0/3
+  point-to-point
+ !
+!
+lldp
+!
+end!
